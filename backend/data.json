@@ -1,0 +1,56 @@
+[ {
+  "id" : "528dde32-3e51-4cf5-82c9-a8561a30c1e9",
+  "source" : "catfacts-breeds",
+  "timestamp" : 1773582320.524653700,
+  "data" : {
+    "breed" : "Abyssinian",
+    "country" : "Ethiopia",
+    "origin" : "Natural/Standard",
+    "coat" : "Short",
+    "pattern" : "Ticked"
+  }
+}, {
+  "id" : "7fd8d252-961a-4b02-a975-964a8fdcea61",
+  "source" : "catfacts-breeds",
+  "timestamp" : 1773582320.524653700,
+  "data" : {
+    "breed" : "Aegean",
+    "country" : "Greece",
+    "origin" : "Natural/Standard",
+    "coat" : "Semi-long",
+    "pattern" : "Bi- or tri-colored"
+  }
+}, {
+  "id" : "b547476f-d837-4833-96b7-092c54f0243e",
+  "source" : "catfacts-breeds",
+  "timestamp" : 1773582320.525679400,
+  "data" : {
+    "breed" : "American Curl",
+    "country" : "United States",
+    "origin" : "Mutation",
+    "coat" : "Short/Long",
+    "pattern" : "All"
+  }
+}, {
+  "id" : "9e760355-d2a9-4169-aad5-15735692a42f",
+  "source" : "catfacts-breeds",
+  "timestamp" : 1773582320.525679400,
+  "data" : {
+    "breed" : "American Bobtail",
+    "country" : "United States",
+    "origin" : "Mutation",
+    "coat" : "Short/Long",
+    "pattern" : "All"
+  }
+}, {
+  "id" : "7ddbb6c6-709c-4aee-a105-3958dca39951",
+  "source" : "catfacts-breeds",
+  "timestamp" : 1773582320.525679400,
+  "data" : {
+    "breed" : "American Shorthair",
+    "country" : "United States",
+    "origin" : "Natural",
+    "coat" : "Short",
+    "pattern" : "All but colorpoint"
+  }
+} ]

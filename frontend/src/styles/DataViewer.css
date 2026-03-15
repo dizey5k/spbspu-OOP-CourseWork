@@ -1,0 +1,38 @@
+.data-viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.filter-panel {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+}
+
+.filter-panel h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 1.25rem 0;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.no-records {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+}
+
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

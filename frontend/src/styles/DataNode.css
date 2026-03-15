@@ -1,0 +1,78 @@
+.string-value {
+  color: #059669;
+}
+
+.primitive-value {
+  color: #d97706;
+}
+
+.null-value,
+.undefined-value {
+  color: #6b7280;
+  font-style: italic;
+}
+
+.bracket,
+.brace {
+  color: #4b5563;
+  font-weight: 500;
+  margin-right: 0.25rem;
+}
+
+.array-items,
+.object-properties {
+  margin-left: 1.25rem;
+}
+
+.property {
+  margin: 0.25rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.key {
+  color: #2563eb;
+  font-weight: 500;
+  min-width: 80px;
+}
+
+.comma {
+  color: #6b7280;
+  margin-left: 0.25rem;
+}
+
+.object-node {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  margin: 0.25rem 0;
+  border: 1px solid var(--border-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  .string-value {
+    color: #6ee7b7;
+  }
+  .primitive-value {
+    color: #fbbf24;
+  }
+  .null-value,
+  .undefined-value {
+    color: #9ca3af;
+  }
+  .bracket,
+  .brace {
+    color: #9ca3af;
+  }
+  .key {
+    color: #60a5fa;
+  }
+  .comma {
+    color: #9ca3af;
+  }
+  .object-node {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}

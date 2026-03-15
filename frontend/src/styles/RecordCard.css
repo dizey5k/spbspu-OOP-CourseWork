@@ -1,0 +1,77 @@
+.record-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.record-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.source-badge {
+  background: var(--glass-bg);
+  backdrop-filter: blur(4px);
+  padding: 0.25rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid var(--glass-border);
+}
+
+.timestamp {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.record-content {
+  color: var(--text-primary);
+  font-family: "SF Mono", "Fira Code", monospace;
+  font-size: 0.9rem;
+}
+
+.detail-row {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.label {
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-right: 0.5rem;
+  min-width: 100px;
+  display: inline-block;
+}
+
+.nested {
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.geo {
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+.user-details,
+.breed-details {
+  font-size: 0.95rem;
+}
