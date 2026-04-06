@@ -75,3 +75,26 @@
 .breed-details {
   font-size: 0.95rem;
 }
+
+.justbible .books-list {
+  margin: 0.5rem 0 0 1rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+.justbible .books-list li {
+  margin: 0.75rem 0;
+  border-left: 2px solid var(--border-color);
+  padding-left: 1rem;
+}
+
+.justbible details {
+  margin-top: 0.25rem;
+  margin-left: 1rem;
+}
+
+.justbible summary {
+  cursor: pointer;
+  color: var(--accent-color);
+  font-size: 0.9rem;
+}

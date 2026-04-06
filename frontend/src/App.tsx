@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { getSources } from "./api/client";
-import FetchForm from "./components/FetchForm";
+// import FetchForm from "./components/FetchForm";
 import "./App.css";
 import type { ApiSourceInfo } from "./types";
 import DataViewer from "./components/DataViewer";
+import PollControl from "./components/PollControl";
 
 function App() {
   const [sources, setSources] = useState<ApiSourceInfo[]>([]);
@@ -51,7 +52,7 @@ function App() {
 
       <main>
         {activeTab === "fetch" ? (
-          <FetchForm sources={sources} />
+          <PollControl sources={sources} />
         ) : (
           <DataViewer sources={sources} />
         )}
