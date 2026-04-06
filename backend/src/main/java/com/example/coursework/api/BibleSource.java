@@ -14,34 +14,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class JsonPlaceholderUsersSource implements ApiSource {
-    private static final String URL = "https://jsonplaceholder.typicode.com/users";
+public class BibleSource implements ApiSource {
+    private static final String URL = "https://justbible.ru/api/bible?translation=rst";
     private final OkHttpClient client = new OkHttpClient();
     private final ObjectMapper mapper = new ObjectMapper();
 
     @Override
     public String getName() {
-        return "jsonplaceholder-users";
+        return "justbible";
     }
 
     @Override
     public String getDisplayName() {
-        return "JSONPlaceholder Users";
+        return "Just Bible (Синодальный перевод)";
     }
 
     @Override
     public List<AggregatedRecord> fetchData() throws IOException {
         Request request = new Request.Builder().url(URL).build();
         try (Response response = client.newCall(request).execute()) {
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+            if (!response.isSuccessful()) {
+                throw new IOException("Unexpected code " + response);
+            }
             assert response.body() != null;
             JsonNode root = mapper.readTree(response.body().byteStream());
             List<AggregatedRecord> records = new ArrayList<>();
-            if (root.isArray()) {
-                for (JsonNode user : root) {
-                    records.add(new AggregatedRecord(getName(), user));
-                }
-            }
+            records.add(new AggregatedRecord(getName(), root));
             return records;
         }
     }

@@ -1,5 +1,6 @@
 package com.example.coursework;
 
+import com.example.coursework.api.BibleSource;
 import com.example.coursework.api.CatFactsBreedsSource;
 import com.example.coursework.model.ApiSource;
 import com.example.coursework.api.JsonPlaceholderUsersSource;
@@ -17,9 +18,6 @@ public class CourseworkApplication {
 
     @Bean
     public List<ApiSource> apiSources() {
-        return List.of(
-                new CatFactsBreedsSource(),
-                new JsonPlaceholderUsersSource()
-        );
+        return List.of();
     }
 }
