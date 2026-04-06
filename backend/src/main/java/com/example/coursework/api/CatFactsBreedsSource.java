@@ -7,10 +7,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CatFactsBreedsSource implements ApiSource {
     private static final String URL = "https://catfact.ninja/breeds?limit=5";
     private final OkHttpClient client = new OkHttpClient();
