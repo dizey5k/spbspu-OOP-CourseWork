@@ -3,6 +3,8 @@ import type {
   ApiSourceInfo,
   FetchRequest,
   FetchResponse,
+  SchedulerStartRequest,
+  SchedulerStatus,
 } from "@interfaces/";
 import axios from "axios";
 
@@ -13,9 +15,22 @@ export const apiClient = axios.create({
 });
 
 export const getSources = () => apiClient.get<ApiSourceInfo[]>("/sources");
+
 export const fetchData = (request: FetchRequest) =>
   apiClient.post<FetchResponse>("/fetch", request);
+
 export const getData = (filename: string, format: string, source?: string) =>
   apiClient.get<AggregatedRecord[]>("/data", {
     params: { filename, format, source },
   });
+
+export const startScheduler = (request: SchedulerStartRequest) =>
+  apiClient.post<string>("/scheduler/start", request);
+
+export const stopScheduler = (filename?: string) =>
+  apiClient.post<string>(
+    `/scheduler/stop${filename ? `?filename=${filename}` : ""}`,
+  );
+
+export const getSchedulerStatus = () =>
+  apiClient.get<SchedulerStatus>("/scheduler/status");
