@@ -21,11 +21,21 @@ public class BibleSource implements ApiSource {
 
     @Override
     public String getName() {
-        return "justbible";
+        return "";
     }
 
     @Override
     public String getDisplayName() {
+        return "";
+    }
+
+    @Override
+    public String name() {
+        return "justbible";
+    }
+
+    @Override
+    public String displayName() {
         return "Just Bible (Синодальный перевод)";
     }
 
@@ -39,7 +49,7 @@ public class BibleSource implements ApiSource {
             assert response.body() != null;
             JsonNode root = mapper.readTree(response.body().byteStream());
             List<AggregatedRecord> records = new ArrayList<>();
-            records.add(new AggregatedRecord(getName(), root));
+            records.add(new AggregatedRecord(name(), root));
             return records;
         }
     }

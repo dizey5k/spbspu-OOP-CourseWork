@@ -5,7 +5,6 @@ import com.example.coursework.controller.dto.FetchRequest;
 import com.example.coursework.controller.dto.RecordDto;
 import com.example.coursework.model.AggregatedRecord;
 import com.example.coursework.model.ApiSource;
-import com.example.coursework.service.AggregationService;
 import com.example.coursework.service.ApiSourceRegistry;
 import com.example.coursework.service.FileService;
 import com.example.coursework.service.ParallelDataFetcher;
@@ -36,14 +35,25 @@ public class ApiController {
     }
 
     @GetMapping("/sources")
-    public List<ApiInfoDto> listSources() {
-        return sourceRegistry.getAllSources().stream()
-                .map(s -> new ApiInfoDto(s.getName(), s.getDisplayName()))
+    public ResponseEntity<List<ApiInfoDto>> listSources() {
+        List<ApiInfoDto> result = sourceRegistry.getAllSources().stream()
+                .map(s -> new ApiInfoDto(s.name(), s.displayName()))
                 .collect(Collectors.toList());
+
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping("/fetch")
     public ResponseEntity<?> fetchData(@RequestBody FetchRequest request) {
+
+        if (request.getFormat() == null ||
+                (!request.getFormat().equalsIgnoreCase("json") &&
+                        !request.getFormat().equalsIgnoreCase("csv"))) {
+            return ResponseEntity.badRequest().body("Format must be 'json' or 'csv'");
+        }
+
+        String format = request.getFormat().toLowerCase();
+
         List<ApiSource> sources = sourceRegistry.getSourcesByName(request.getSources());
         if (sources.isEmpty()) {
             return ResponseEntity.badRequest().body("No valid sources selected");
@@ -52,14 +62,11 @@ public class ApiController {
         int maxParallel = request.getMaxParallel() != null ? request.getMaxParallel() : 5;
         List<AggregatedRecord> newRecords = parallelDataFetcher.fetchAll(sources, maxParallel);
 
-        String format = request.getFormat().toLowerCase();
-        if (!format.equals("json") && !format.equals("csv")) {
-            return ResponseEntity.badRequest().body("Format must be 'json' or 'csv'");
-        }
         String filename = request.getFilename();
         if (filename == null || filename.isBlank()) {
             filename = "data." + format;
         }
+
         Path filePath = Paths.get(filename);
 
         try {

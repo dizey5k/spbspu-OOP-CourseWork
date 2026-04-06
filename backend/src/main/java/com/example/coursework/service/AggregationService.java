@@ -15,7 +15,7 @@ public class AggregationService {
             try {
                 allRecords.addAll(source.fetchData());
             } catch (IOException e) {
-                System.err.println("Err while getting data from " + source.getDisplayName() + ": " + e.getMessage());
+                System.err.println("Err while getting data from " + source.displayName() + ": " + e.getMessage());
             }
         }
         return allRecords;

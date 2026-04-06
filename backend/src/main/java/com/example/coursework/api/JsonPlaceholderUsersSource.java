@@ -21,11 +21,21 @@ public class JsonPlaceholderUsersSource implements ApiSource {
 
     @Override
     public String getName() {
-        return "jsonplaceholder-users";
+        return "";
     }
 
     @Override
     public String getDisplayName() {
+        return "";
+    }
+
+    @Override
+    public String name() {
+        return "jsonplaceholder-users";
+    }
+
+    @Override
+    public String displayName() {
         return "JSONPlaceholder Users";
     }
 
@@ -39,7 +49,7 @@ public class JsonPlaceholderUsersSource implements ApiSource {
             List<AggregatedRecord> records = new ArrayList<>();
             if (root.isArray()) {
                 for (JsonNode user : root) {
-                    records.add(new AggregatedRecord(getName(), user));
+                    records.add(new AggregatedRecord(name(), user));
                 }
             }
             return records;

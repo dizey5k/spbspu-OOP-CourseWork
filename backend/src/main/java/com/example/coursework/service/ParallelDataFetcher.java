@@ -23,7 +23,7 @@ public class ParallelDataFetcher {
                     try {
                         return source.fetchData();
                     } catch (Exception e) {
-                        System.err.println("Error fetching from " + source.getDisplayName() + ": " + e.getMessage());
+                        System.err.println("Error fetching from " + source.displayName() + ": " + e.getMessage());
                         return List.<AggregatedRecord>of();
                     }
                 }));

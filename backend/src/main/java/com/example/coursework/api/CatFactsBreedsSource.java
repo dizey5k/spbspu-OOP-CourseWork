@@ -21,11 +21,21 @@ public class CatFactsBreedsSource implements ApiSource {
 
     @Override
     public String getName() {
-        return "catfacts-breeds";
+        return "";
     }
 
     @Override
     public String getDisplayName() {
+        return "";
+    }
+
+    @Override
+    public String name() {
+        return "catfacts-breeds";
+    }
+
+    @Override
+    public String displayName() {
         return "Cat Facts Breeds";
     }
 
@@ -39,7 +49,7 @@ public class CatFactsBreedsSource implements ApiSource {
             List<AggregatedRecord> records = new ArrayList<>();
             if (data != null && data.isArray()) {
                 for (JsonNode breed : data) {
-                    records.add(new AggregatedRecord(getName(), breed));
+                    records.add(new AggregatedRecord(name(), breed));
                 }
             }
             return records;

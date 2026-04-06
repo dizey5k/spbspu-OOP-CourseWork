@@ -13,7 +13,7 @@ public class ApiSourceRegistry {
 
     public ApiSourceRegistry(List<ApiSource> sources) {
         this.sourcesMap = sources.stream()
-                .collect(Collectors.toMap(ApiSource::getName, Function.identity()));
+                .collect(Collectors.toMap(ApiSource::name, Function.identity()));
     }
 
     public List<ApiSource> getAllSources() {

@@ -5,6 +5,10 @@ import java.util.List;
 
 public interface ApiSource {
     String getName();
+
     String getDisplayName();
+
+    String name();
+    String displayName();
     List<AggregatedRecord> fetchData() throws IOException;
 }

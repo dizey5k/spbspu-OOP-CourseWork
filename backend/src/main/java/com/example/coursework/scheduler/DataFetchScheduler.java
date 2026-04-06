@@ -66,12 +66,12 @@ public class DataFetchScheduler {
                         fileService.save(records, filePath, format, append);
                     }
                 } catch (Exception e) {
-                    System.err.println("Scheduled fetch error for " + source.getDisplayName() + ": " + e.getMessage());
+                    System.err.println("Scheduled fetch error for " + source.displayName() + ": " + e.getMessage());
                 }
             };
             ScheduledFuture<?> future = scheduler.scheduleWithFixedDelay(
                     task, 0, intervalSec, TimeUnit.SECONDS);
-            tasks.put(jobId + ":" + source.getName(), future);
+            tasks.put(jobId + ":" + source.name(), future);
         }
         return true;
     }

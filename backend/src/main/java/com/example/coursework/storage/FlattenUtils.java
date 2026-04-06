@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class FlattenUtils {
+
     public static Map<String, String> flatten(JsonNode node, String parentPath) {
         Map<String, String> flatMap = new LinkedHashMap<>();
         if (node.isObject()) {
@@ -17,7 +18,6 @@ public class FlattenUtils {
                 flatMap.putAll(flatten(value, path));
             });
         } else if (node.isArray()) {
-            // Упрощение: если массив, преобразуем его в строку JSON (не разворачиваем)
             flatMap.put(parentPath, node.toString());
         } else if (!node.isNull()) {
             flatMap.put(parentPath, node.asText());
@@ -25,6 +25,7 @@ public class FlattenUtils {
         return flatMap;
     }
 
+    @SuppressWarnings("unchecked")
     public static JsonNode expand(Map<String, String> flatData, ObjectMapper mapper) {
         Map<String, Object> root = new LinkedHashMap<>();
         flatData.forEach((path, value) -> {
@@ -32,10 +33,10 @@ public class FlattenUtils {
             Map<String, Object> current = root;
             for (int i = 0; i < parts.length - 1; i++) {
                 String part = parts[i];
-                current = (Map<String, Object>) current.computeIfAbsent(part, k -> new LinkedHashMap<>());
+                // Явно указываем тип Map для нового экземпляра
+                current = (Map<String, Object>) current.computeIfAbsent(part, k -> new LinkedHashMap<String, Object>());
             }
             String lastPart = parts[parts.length - 1];
-            // Попытка распарсить число или булево (упрощённо)
             if (value.matches("-?\\d+")) {
                 current.put(lastPart, Long.parseLong(value));
             } else if (value.matches("-?\\d+\\.\\d+")) {
