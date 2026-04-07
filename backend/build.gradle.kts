@@ -26,8 +26,8 @@ dependencies {
 
     testImplementation(platform("org.springframework.boot:spring-boot-dependencies:3.1.5"))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.mockito:mockito-core:5.12.0")
-    testImplementation("org.mockito:mockito-junit-jupiter:5.12.0")
+    testImplementation("org.mockito:mockito-core:5.15.2")
+    testImplementation("org.mockito:mockito-junit-jupiter:5.15.2")
     testImplementation("org.assertj:assertj-core:3.24.2")
 }
 

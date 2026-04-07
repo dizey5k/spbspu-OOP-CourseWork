@@ -4,6 +4,8 @@ import com.example.coursework.model.AggregatedRecord;
 import com.example.coursework.model.ApiSource;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -77,5 +79,21 @@ class ApiSourceRegistryTest {
         ApiSourceRegistry registry = new ApiSourceRegistry(List.of(sourceA, sourceB));
 
         assertThat(registry.getAllSources()).containsExactlyInAnyOrder(sourceA, sourceB);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "a, a",
+            "b, b",
+            "c, null"
+    })
+    void getSource_ShouldReturnCorrect(String name, String expectedName) {
+        ApiSourceRegistry registry = new ApiSourceRegistry(List.of(sourceA, sourceB));
+        ApiSource result = registry.getSource(name);
+        if ("null".equals(expectedName)) {
+            assertThat(result).isNull();
+        } else {
+            assertThat(result.name()).isEqualTo(expectedName);
+        }
     }
 }
