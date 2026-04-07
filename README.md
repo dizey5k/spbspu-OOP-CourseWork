@@ -38,7 +38,7 @@ coursework/
 ### Основные компоненты backend
 
 - **`ApiSource`** – интерфейс для добавления новых источников данных.
-- Реализации: `CatFactsBreedsSource`, `JsonPlaceholderUsersSource`.
+- Реализации: `CatFactsBreedsSource`, `JsonPlaceholderUsersSource`, `BibleSource`.
 - **`AggregationService`** – сбор данных из выбранных источников.
 - **`FileService`** – сохранение и загрузка файлов в формате JSON/CSV.
 - REST контроллер `ApiController` с эндпоинтами:
